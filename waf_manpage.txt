@@ -1,0 +1,160 @@
+waf [commands] [options]
+
+Main commands (example: ./waf build -j4)
+  AP_Periph     : builds AP_Periph programs
+  all           : builds all programs of all group
+  antennatracker: builds antennatracker programs
+  benchmarks    : builds all programs of benchmarks group
+  bin           : builds all programs of bin group
+  bootloader    : builds bootloader programs
+  build         : executes the build
+  check         : builds all programs and run tests
+  check-all     : shortcut for `waf check --alltests`
+  clean         : cleans the project
+  configure     : configures the project
+  copter        : builds copter programs
+  dist          : makes a tarball for redistributing the sources
+  distcheck     : checks if the project compiles (tarball from 'dist')
+  distclean     : removes build folders and data
+  examples      : builds all programs of examples group
+  heli          : builds heli programs
+  install       : installs the targets on the system
+  iofirmware    : builds iofirmware programs
+  list          : lists the targets to execute
+  localinstall  : runs install using BLD/install as destdir, where BLD is the build variant directory
+  plane         : builds plane programs
+  rover         : builds rover programs
+  rsync         : runs localinstall and then rsyncs BLD/install with the target system
+  step          : executes tasks in a step-by-step fashion, for debugging
+  sub           : builds sub programs
+  tests         : builds all programs of tests group
+  tools         : builds all programs of tools group
+  uninstall     : removes the targets installed
+
+Options:
+  --version             show program's version number and exit
+  -c COLORS, --color=COLORS
+                        whether to use colors (yes/no/auto) [default: auto]
+  -j JOBS, --jobs=JOBS  amount of parallel jobs (12)
+  -k, --keep            continue despite errors (-kk to try harder)
+  -v, --verbose         verbosity level -v -vv or -vvv [default: 0]
+  --zones=ZONES         debugging zones (task_gen, deps, tasks, etc)
+  -h, --help            show this help message and exit
+  --notests             Exec no unit tests
+  --alltests            Exec all unit tests
+  --clear-failed        Force failed unit tests to run again next time
+  --testcmd=TESTCMD     Run the unit tests using the test-cmd string example "--testcmd="valgrind --error-exitcode=1
+                        %s" to run under valgrind
+  --dump-test-scripts   Create python scripts to help debug tests
+
+  Configuration options:
+    -o OUT, --out=OUT   build dir for the project
+    -t TOP, --top=TOP   src dir for the project
+    --check-cxx-compiler=CHECK_CXX_COMPILER
+                        list of C++ compilers to try [g++ clang++ icpc]
+    --check-c-compiler=CHECK_C_COMPILER
+                        list of C compilers to try [gcc clang icc]
+
+  Build and installation options:
+    -p, --progress      -p: progress bar; -pp: ide output
+    --targets=TARGETS   task generators, e.g. "target1,target2"
+
+  Step options:
+    --files=FILES       files to process, by regexp, e.g. "*/main.c,*/test/main.o"
+
+  Installation and uninstallation options:
+    -f, --force         force file installation
+    --distcheck-args=ARGS
+                        arguments to pass to distcheck
+
+  Python Options:
+    --nopyc             Do not install bytecode compiled .pyc files (configuration) [Default:install]
+    --nopyo             Do not install optimised compiled .pyo files (configuration) [Default:install]
+    --nopycache         Do not use __pycache__ directory to install objects [Default:auto]
+    --python=PYTHON     python binary to be used [Default: /usr/bin/python]
+    --pythondir=PYTHONDIR
+                        Installation path for python modules (py, platform-independent .py and .pyc files)
+    --pythonarchdir=PYTHONARCHDIR
+                        Installation path for python extension (pyext, platform-dependent .so or .dylib files)
+
+  Ardupilot configure options:
+    --board=BOARD       Target board to build, choices are aero, airbotf4, bbbmini, bebop, bhat, blue, crazyflie2,
+                        CUAV-Nora, CUAV-X7, CUAV_GPS, CUAVv5, CUAVv5Nano, CubeBlack, CubeBlack+, CubeGreen-solo,
+                        CubeOrange, CubePurple, CubeSolo, CubeYellow, dark, disco, DrotekP3Pro, Durandal, edge,
+                        erleboard, erlebrain2, f103-ADSB, f103-GPS, f103-HWESC, f103-periph, f103-RangeFinder,
+                        f103-Trigger, f303-GPS, f303-HWESC, f303-M10025, f303-M10070, f303-periph, f303-Universal,
+                        F35Lightning, F4BY, fmuv2, fmuv3, fmuv4, fmuv4-beta, fmuv5, iomcu, KakuteF4, KakuteF7,
+                        KakuteF7Mini, linux, luminousbee4, MatekF405, MatekF405-STD, MatekF405-Wing, MatekF765-Wing,
+                        MatekH743, mindpx-v2, mini-pix, mRoControlZeroF7, mRoNexus, mRoPixracerPro, mRoX21, mRoX21-777,
+                        navio, navio2, NucleoH743, ocpoc_zynq, omnibusf4, omnibusf4pro, omnibusf4v6, OMNIBUSF7V2,
+                        OmnibusNanoV6, PH4-mini, Pix32v5, Pixhawk1, Pixhawk1-1M, Pixhawk4, Pixracer, pocket, pxf,
+                        pxfmini, R9Pilot, revo-mini, rst_zynq, sitl, SITL_arm_linux_gnueabihf, SITL_static,
+                        SITL_x86_64_linux_gnu, skyviper-f412-rev1, skyviper-journey, skyviper-v2450, sparky2,
+                        speedybeef4, SuccexF4, TBS-Colibri-F7, VRBrain-v51, VRBrain-v52, VRBrain-v54, VRCore-v10,
+                        VRUBrain-v51, ZubaxGNSS, zynq.
+    --debug             Configure as debug variant.
+    --toolchain=TOOLCHAIN
+                        Override default toolchain used for the board. Use "native" for using the host toolchain.
+    --disable-gccdeps   Disable the use of GCC dependencies output method and use waf default method.
+    --enable-asserts    enable OS level asserts.
+    --bootloader        Configure for building a bootloader.
+    --no-autoconfig     Disable autoconfiguration feature. By default, the build system triggers a reconfiguration
+                        whenever it thinks it's necessary - this option disables that.
+    --no-submodule-update
+                        Don't update git submodules. Useful for building with submodules at specific revisions.
+    --enable-header-checks
+                        Enable checking of headers
+    --default-parameters=DEFAULT_PARAMETERS
+                        set default parameters to embed in the firmware
+    --enable-math-check-indexes
+                        Enable checking of math indexes
+    --disable-scripting
+                        Disable onboard scripting engine
+    --scripting-checks  Enable runtime scripting sanity checks
+
+  Linux boards configure options:
+    --prefix=PREFIX     installation prefix [default: '/usr/']
+    --destdir=DESTDIR   installation root [default: '']
+    --bindir=BINDIR     bindir
+    --libdir=LIBDIR     libdir
+    --apstatedir=APSTATEDIR
+                        Where to save data like parameters, log and terrain. This is the --localstatedir + ArduPilots
+                        subdirectory [default: board-dependent, usually /var/lib/ardupilot]
+    --rsync-dest=RSYNC_DEST
+                        Destination for the rsync Waf command. It can be passed during configuration in order to save
+                        typing.
+    --enable-benchmarks
+                        Enable benchmarks.
+    --enable-lttng      Enable lttng integration
+    --disable-libiio    Don't use libiio even if supported by board and dependencies available
+    --disable-tests     Disable compilation and test execution
+    --enable-sfml       Enable SFML graphics library
+    --enable-sfml-audio
+                        Enable SFML audio library
+    --sitl-osd          Enable SITL OSD
+    --sitl-rgbled       Enable SITL RGBLed
+    --build-dates       Include build date in binaries.  Appears in AUTOPILOT_VERSION.os_sw_version
+    --sitl-flash-storage
+                        Configure for building SITL with flash storage emulation.
+    --static            Force a static build
+
+  Ardupilot build options:
+    --program-group=PROGRAM_GROUP
+                        Select all programs that go in <PROGRAM_GROUP>/ for the build. Example: `waf --program-group
+                        examples` builds all examples. The special group "all" selects all programs.
+    --upload            Upload applicable targets to a connected device. Not all platforms may support this. Example:
+                        `waf copter --upload` means "build arducopter and upload it to my board".
+    --upload-port=UPLOAD_PORT
+                        Specify the port to be used with the --upload option. For example a port of /dev/ttyS10
+                        indicates that serial port 10 shuld be used.
+    --summary-all       Print build summary for all targets. By default, only information about the first 20 targets
+                        will be printed.
+
+  Ardupilot check options:
+    --check-verbose     Output all test programs.
+
+  Ardupilot clean options:
+    --clean-all-sigs    Clean signatures for all tasks. By default, tasks that scan for implicit dependencies (like the
+                        compilation tasks) keep the dependency information across clean commands, so that that
+                        information is changed only when really necessary. Also, some tasks that don't really produce
+                        files persist their signature. This option avoids that behavior when cleaning the build.
