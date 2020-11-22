@@ -523,6 +523,15 @@
  #define ACRO_RP_EXPO_DEFAULT       0.3f
 #endif
 
+// Watts parameters
+#ifndef PROP_GRP_ID_DEFAULT
+ #define PROP_GRP_ID_DEFAULT       0
+#endif
+#ifndef PROP_GRP_WR_DEFAULT
+ #define PROP_GRP_WR_DEFAULT       0
+#endif
+//
+
 #ifndef ACRO_Y_EXPO_DEFAULT
  #define ACRO_Y_EXPO_DEFAULT        0.0f
 #endif

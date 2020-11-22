@@ -191,7 +191,7 @@ public:
 
         // 97: RSSI
         k_param_rssi = 97,
-                
+
         //
         // 100: Inertial Nav
         //
@@ -373,6 +373,12 @@ public:
 
         // 254,255: reserved
 
+        // Watts: Jake: define custom Watts parameters here
+        k_param_prop_grp_id = 256, // Currently configured propulsion group ID.
+        k_param_prop_grp_wr,       // Flag indicating that we should write defaults for parameters in the current
+                                   // propulsion group. Should be set right before a firmware update, and cleared
+                                   // on first boot after an update.
+
         // the k_param_* space is 9-bits in size
         // 511: reserved
     };
@@ -407,7 +413,7 @@ public:
 
     AP_Int16        poshold_brake_rate;         // PosHold flight mode's rotation rate during braking in deg/sec
     AP_Int16        poshold_brake_angle_max;    // PosHold flight mode's max lean angle during braking in centi-degrees
-    
+
     // Waypoints
     //
     AP_Int32        rtl_loiter_time;
@@ -464,6 +470,11 @@ public:
     AP_Float                acro_balance_pitch;
     AP_Int8                 acro_trainer;
     AP_Float                acro_rp_expo;
+
+    // Watts parameters
+    AP_Int16                 prop_grp_id;
+    AP_Int8                  prop_grp_wr;
+
 
     // Note: keep initializers here in the same order as they are declared
     // above.
@@ -528,7 +539,7 @@ public:
 
     // whether to enforce acceptance of packets only from sysid_my_gcs
     AP_Int8 sysid_enforce;
-    
+
 #if ADVANCED_FAILSAFE == ENABLED
     // advanced failsafe library
     AP_AdvancedFailsafe_Copter afs;
@@ -548,7 +559,7 @@ public:
 
     // RC input channels
     RC_Channels_Copter rc_channels;
-    
+
     // control over servo output ranges
     SRV_Channels servo_channels;
 

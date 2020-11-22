@@ -532,7 +532,7 @@ private:
     AP_Parachute parachute{relay};
 #endif
 
-    // Button 
+    // Button
 #if BUTTON_ENABLED == ENABLED
     AP_Button button;
 #endif
@@ -831,6 +831,7 @@ private:
 
     // Parameters.cpp
     void load_parameters(void);
+    void set_and_save_watts_parameters(void);
     void convert_pid_parameters(void);
     void convert_lgr_parameters(void);
     void convert_tradheli_parameters(void);
@@ -1001,6 +1002,9 @@ private:
 public:
     void mavlink_delay_cb();    // GCS_Mavlink.cpp
     void failsafe_check();      // failsafe.cpp
+
+    // Watts: Jake:
+    bool _shouldReboot = false;
 };
 
 extern Copter copter;
