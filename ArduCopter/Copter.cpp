@@ -235,7 +235,7 @@ void Copter::setup()
 
 void Copter::set_and_save_watts_parameters()
 {
-    int16_t group_id = g.prop_grp_id;
+    int32_t group_id = g.prop_grp_id;
     switch (group_id) {
     case 0: // invalid
         break;

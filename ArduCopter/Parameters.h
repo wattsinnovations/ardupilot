@@ -472,9 +472,8 @@ public:
     AP_Float                acro_rp_expo;
 
     // Watts parameters
-    AP_Int16                 prop_grp_id;
-    AP_Int8                  prop_grp_wr;
-
+    AP_Int32                 prop_grp_id;
+    AP_Int32                 prop_grp_wr;
 
     // Note: keep initializers here in the same order as they are declared
     // above.
