@@ -471,6 +471,7 @@ const AP_Param::Info Copter::var_info[] = {
     // @Param: PROP_GRP_ID
     // @DisplayName: Propulsion Group ID
     // @Description: ID of each currently connected propulsion system, which we refer to as a propulsion group.
+    // @Values: 0:Invalid,1:QUAD U8ii,2:COAXIAL X8 U8ii
     // @User: Standard
     GSCALAR(prop_grp_id,  "PROP_GRP_ID",    PROP_GRP_ID_DEFAULT),
 
