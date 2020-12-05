@@ -58,7 +58,19 @@ bool AP_Arming_Copter::run_pre_arm_checks(bool display_failure)
         & pilot_throttle_checks(display_failure)
         & oa_checks(display_failure)
         & gcs_failsafe_check(display_failure) &
-        AP_Arming::pre_arm_checks(display_failure);
+        AP_Arming::pre_arm_checks(display_failure) &
+        // Watts: Jake: our custom check here for denial of arming
+        prism_deny_arm_check(display_failure);
+}
+
+bool AP_Arming_Copter::prism_deny_arm_check(bool display_failure)
+{
+    if (copter.g.deny_arm) {
+        check_failed(ARMING_CHECK_SYSTEM, display_failure, "PRISM system misconfiguration");
+        return false;
+    }
+
+    return true;
 }
 
 bool AP_Arming_Copter::barometer_checks(bool display_failure)
@@ -150,7 +162,7 @@ bool AP_Arming_Copter::parameter_checks(bool display_failure)
         if (copter.motors->check_mot_pwm_params()) {
             check_failed(ARMING_CHECK_PARAMETERS, display_failure, "Check MOT_PWM_MAX/MIN");
             return false;
-        } 
+        }
 #endif
 
         // ensure all rc channels have different functions

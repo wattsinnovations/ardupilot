@@ -530,6 +530,10 @@
 #ifndef PROP_GRP_WR_DEFAULT
  #define PROP_GRP_WR_DEFAULT       0
 #endif
+
+#ifndef DENY_ARM_DEFAULT
+ #define DENY_ARM_DEFAULT       1
+#endif
 //
 
 #ifndef ACRO_Y_EXPO_DEFAULT

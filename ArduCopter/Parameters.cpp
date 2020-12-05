@@ -481,6 +481,12 @@ const AP_Param::Info Copter::var_info[] = {
     // @User: Standard
     GSCALAR(prop_grp_wr,  "PROP_GRP_WR",    PROP_GRP_WR_DEFAULT),
 
+    // @Param: DENY_ARM
+    // @DisplayName: Deny arming
+    // @Description: Flag that just straight up denies arming
+    // @User: Standard
+    GSCALAR(deny_arm,  "DENY_ARM",    DENY_ARM_DEFAULT),
+
     // variables not in the g class which contain EEPROM saved variables
 
 #if CAMERA == ENABLED

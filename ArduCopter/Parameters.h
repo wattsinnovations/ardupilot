@@ -378,7 +378,7 @@ public:
         k_param_prop_grp_wr,       // Flag indicating that we should write defaults for parameters in the current
                                    // propulsion group. Should be set right before a firmware update, and cleared
                                    // on first boot after an update.
-
+        k_param_deny_arm, // prevents arming
         // the k_param_* space is 9-bits in size
         // 511: reserved
     };
@@ -474,6 +474,8 @@ public:
     // Watts parameters
     AP_Int32                 prop_grp_id;
     AP_Int32                 prop_grp_wr;
+    AP_Int32                 deny_arm;
+
 
     // Note: keep initializers here in the same order as they are declared
     // above.
