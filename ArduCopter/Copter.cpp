@@ -253,21 +253,21 @@ void Copter::set_and_save_watts_parameters()
         AP_Param::set_and_save_by_name("SERVO7_FUNCTION", 35);
         AP_Param::set_and_save_by_name("SERVO8_FUNCTION", 0);
 
-        AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 61099.94922);
-        AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 48876.26172);
-        AP_Param::set_and_save_by_name("ATC_ACCEL_Y_MAX", 18235.36914);
-        AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 14.92838955);
-        AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 6.98579216);
-        AP_Param::set_and_save_by_name("ATC_ANG_YAW_P", 6.731626987);
-        AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.01944153011);
-        AP_Param::set_and_save_by_name("ATC_RAT_PIT_I", 0.2277341038);
-        AP_Param::set_and_save_by_name("ATC_RAT_PIT_P", 0.2277341038);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.01289790962);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.2498228997);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.2498228997);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 61100);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 48875);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_Y_MAX", 18235);
+        AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 14.5);
+        AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 6.5);
+        AP_Param::set_and_save_by_name("ATC_ANG_YAW_P", 6.75);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.0195);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_I", 0.2275);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_P", 0.2275);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.013);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.25);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.25);
         AP_Param::set_and_save_by_name("ATC_RAT_YAW_FLTE", 4.75);
-        AP_Param::set_and_save_by_name("ATC_RAT_YAW_I", 0.1026986986);
-        AP_Param::set_and_save_by_name("ATC_RAT_YAW_P", 1.026986957);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_I", 0.1025);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_P", 1);
         break;
 
     case 2: // Coaxial X8
@@ -281,21 +281,21 @@ void Copter::set_and_save_watts_parameters()
         AP_Param::set_and_save_by_name("SERVO7_FUNCTION", 34);
         AP_Param::set_and_save_by_name("SERVO8_FUNCTION", 37);
 
-        AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 51949.65);
-        AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 47315.86);
-        AP_Param::set_and_save_by_name("ATC_ACCEL_Y_MAX", 15055.89);
-        AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 9);
-        AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 9.5);
-        AP_Param::set_and_save_by_name("ATC_ANG_YAW_P", 5.698756);
-        AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.007336332);
-        AP_Param::set_and_save_by_name("ATC_RAT_PIT_I", 0.1373748);
-        AP_Param::set_and_save_by_name("ATC_RAT_PIT_P", 0.1373748);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.00619467);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.1293759);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.1293759);
-        AP_Param::set_and_save_by_name("ATC_RAT_YAW_FLTE", 1.073194);
-        AP_Param::set_and_save_by_name("ATC_RAT_YAW_I", 0.07916676);
-        AP_Param::set_and_save_by_name("ATC_RAT_YAW_P", 0.7916675);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 53865);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 42250);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_Y_MAX", 10830);
+        AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 9.85);
+        AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 6.5);
+        AP_Param::set_and_save_by_name("ATC_ANG_YAW_P", 5.1);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.00725);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_I", 0.11);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_P", 0.11);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.007725);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.105);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.105);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_FLTE", 1);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_I", 0.07);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_P", 0.75);
         break;
 
     default:
