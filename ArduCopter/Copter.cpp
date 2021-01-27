@@ -309,82 +309,9 @@ void Copter::set_and_save_watts_parameters()
     }
 }
 
-// THIS LIST MUST MATCH THE CubeOrange/defaults.parm
 void Copter::reset_watts_defaults()
 {
-    AP_Param::set_and_save_by_name("ACRO_YAW_P", 3);
-    AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 61100);
-    AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 48875);
-    AP_Param::set_and_save_by_name("ATC_ACCEL_Y_MAX", 18235);
-    AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 14.5);
-    AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 6.5);
-    AP_Param::set_and_save_by_name("ATC_ANG_YAW_P", 6.75);
-    AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.0195);
-    AP_Param::set_and_save_by_name("ATC_RAT_PIT_I", 0.2275);
-    AP_Param::set_and_save_by_name("ATC_RAT_PIT_P", 0.2275);
-    AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.013);
-    AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.25);
-    AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.25);
-    AP_Param::set_and_save_by_name("ATC_RAT_YAW_FLTE", 4.75);
-    AP_Param::set_and_save_by_name("ATC_RAT_YAW_I", 0.1025);
-    AP_Param::set_and_save_by_name("ATC_RAT_YAW_P", 1);
-    AP_Param::set_and_save_by_name("AUTOTUNE_AGGR", 0.085);
-    AP_Param::set_and_save_by_name("BATT_MONITOR", 4);
-    AP_Param::set_and_save_by_name("BATT2_MONITOR", 4);
-    AP_Param::set_and_save_by_name("BATT_AMP_OFFSET", 0.5);
-    AP_Param::set_and_save_by_name("BATT_AMP_PERVLT", 50);
-    AP_Param::set_and_save_by_name("BATT_CRT_VOLT", 43.5);
-    AP_Param::set_and_save_by_name("BATT_FS_CRT_ACT", 1);
-    AP_Param::set_and_save_by_name("BATT_FS_LOW_ACT", 2);
-    AP_Param::set_and_save_by_name("BATT_LOW_VOLT", 43.8);
-    AP_Param::set_and_save_by_name("BATT2_AMP_OFFSET", 0.5);
-    AP_Param::set_and_save_by_name("BATT2_AMP_PERVLT", 50);
-    AP_Param::set_and_save_by_name("BATT2_CRT_VOLT", 43.5);
-    AP_Param::set_and_save_by_name("BATT2_CURR_PIN", 4);
-    AP_Param::set_and_save_by_name("BATT2_VOLT_PIN", 13);
-    AP_Param::set_and_save_by_name("BATT2_FS_CRT_ACT", 1);
-    AP_Param::set_and_save_by_name("BATT2_FS_LOW_ACT", 2);
-    AP_Param::set_and_save_by_name("BATT2_LOW_VOLT", 43.8);
-    AP_Param::set_and_save_by_name("BRD_PWM_COUNT", 0);
-    AP_Param::set_and_save_by_name("BRD_SAFETYENABLE", 0);
-    AP_Param::set_and_save_by_name("BRD_SBUS_OUT", 1);
-    AP_Param::set_and_save_by_name("CAN_P1_DRIVER", 1);
-    AP_Param::set_and_save_by_name("CAN_P2_DRIVER", 1);
-    AP_Param::set_and_save_by_name("COMPASS_DEV_ID", 590114);
-    AP_Param::set_and_save_by_name("COMPASS_DEV_ID2", 97539);
-    AP_Param::set_and_save_by_name("COMPASS_DEV_ID3", 97283);
-    AP_Param::set_and_save_by_name("COMPASS_EXTERN2", 1);
-    AP_Param::set_and_save_by_name("COMPASS_EXTERNAL", 1);
-    AP_Param::set_and_save_by_name("COMPASS_PRIO1_ID", 97539);
-    AP_Param::set_and_save_by_name("COMPASS_PRIO2_ID", 97283);
-    AP_Param::set_and_save_by_name("COMPASS_PRIO3_ID", 590114);
-    AP_Param::set_and_save_by_name("DISARM_DELAY", 7);
-    AP_Param::set_and_save_by_name("EK2_ALT_SOURCE", 2);
-    AP_Param::set_and_save_by_name("FLTMODE1", 2);
-    AP_Param::set_and_save_by_name("FLTMODE2", 2);
-    AP_Param::set_and_save_by_name("FLTMODE3", 2);
-    AP_Param::set_and_save_by_name("FLTMODE4", 2);
-    AP_Param::set_and_save_by_name("FLTMODE5", 2);
-    AP_Param::set_and_save_by_name("FLTMODE6", 16);
-    AP_Param::set_and_save_by_name("FRAME_CLASS", 1);
-    AP_Param::set_and_save_by_name("FS_GCS_ENABLE", 0);
-    AP_Param::set_and_save_by_name("GPS_TYPE", 9);
-    AP_Param::set_and_save_by_name("GPS_TYPE2", 9);
-    AP_Param::set_and_save_by_name("MOT_BAT_VOLT_MAX", 50.4);
-    AP_Param::set_and_save_by_name("MOT_BAT_VOLT_MIN", 39.6);
-    AP_Param::set_and_save_by_name("MOT_PWM_MAX", 1940);
-    AP_Param::set_and_save_by_name("MOT_PWM_MIN", 1000);
-    AP_Param::set_and_save_by_name("MOT_SPIN_ARM", 0.15);
-    AP_Param::set_and_save_by_name("MOT_SPIN_MIN", 0.18);
-    AP_Param::set_and_save_by_name("NTF_LED_TYPES", 231);
-    AP_Param::set_and_save_by_name("RC7_OPTION", 4);
-    AP_Param::set_and_save_by_name("RELAY_PIN", -1);
-    AP_Param::set_and_save_by_name("RELAY_PIN2", 54);
-    AP_Param::set_and_save_by_name("RTL_LOIT_TIME", 1000);
-    AP_Param::set_and_save_by_name("SERIAL1_BAUD", 115);
-    AP_Param::set_and_save_by_name("SERIAL1_PROTOCOL", 2);
-    AP_Param::set_and_save_by_name("SERIAL5_BAUD", 57);
-    AP_Param::set_and_save_by_name("SERIAL5_PROTOCOL", 2);
+    // Nothing here yet
 }
 
 void Copter::loop()
