@@ -534,6 +534,10 @@
 #ifndef DENY_ARM_DEFAULT
  #define DENY_ARM_DEFAULT       1
 #endif
+
+#ifndef FW_UPDATE_DEFAULT
+ #define FW_UPDATE_DEFAULT       0
+#endif
 //
 
 #ifndef ACRO_Y_EXPO_DEFAULT

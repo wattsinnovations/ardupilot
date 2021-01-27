@@ -379,6 +379,8 @@ public:
                                    // propulsion group. Should be set right before a firmware update, and cleared
                                    // on first boot after an update.
         k_param_deny_arm, // prevents arming
+        k_param_fw_update, // flag indicating firmware was just updated
+
         // the k_param_* space is 9-bits in size
         // 511: reserved
     };
@@ -475,7 +477,7 @@ public:
     AP_Int32                 prop_grp_id;
     AP_Int32                 prop_grp_wr;
     AP_Int32                 deny_arm;
-
+    AP_Int32                 fw_update;
 
     // Note: keep initializers here in the same order as they are declared
     // above.

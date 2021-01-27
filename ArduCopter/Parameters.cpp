@@ -487,6 +487,12 @@ const AP_Param::Info Copter::var_info[] = {
     // @User: Standard
     GSCALAR(deny_arm,  "DENY_ARM",    DENY_ARM_DEFAULT),
 
+    // @Param: FW_UPDATE
+    // @DisplayName: Firmware update flag
+    // @Description: Flag that indicates if the firmware was just updated
+    // @User: Standard
+    GSCALAR(fw_update,  "FW_UPDATE",    FW_UPDATE_DEFAULT),
+
     // variables not in the g class which contain EEPROM saved variables
 
 #if CAMERA == ENABLED
