@@ -281,18 +281,18 @@ void Copter::set_and_save_watts_parameters()
         AP_Param::set_and_save_by_name("SERVO7_FUNCTION", 34);
         AP_Param::set_and_save_by_name("SERVO8_FUNCTION", 37);
 
-        AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 53865);
-        AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 42250);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 52270);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 53992);
         AP_Param::set_and_save_by_name("ATC_ACCEL_Y_MAX", 10830);
-        AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 9.85);
-        AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 6.5);
+        AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 9.725);
+        AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 11);
         AP_Param::set_and_save_by_name("ATC_ANG_YAW_P", 5.1);
-        AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.00725);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.006215);
         AP_Param::set_and_save_by_name("ATC_RAT_PIT_I", 0.11);
         AP_Param::set_and_save_by_name("ATC_RAT_PIT_P", 0.11);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.007725);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.105);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.105);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.00662);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.09777);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.09777);
         AP_Param::set_and_save_by_name("ATC_RAT_YAW_FLTE", 1);
         AP_Param::set_and_save_by_name("ATC_RAT_YAW_I", 0.07);
         AP_Param::set_and_save_by_name("ATC_RAT_YAW_P", 0.75);
