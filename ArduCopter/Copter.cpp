@@ -259,21 +259,21 @@ void Copter::set_and_save_watts_parameters()
         AP_Param::set_and_save_by_name("SERVO7_FUNCTION", 35);
         AP_Param::set_and_save_by_name("SERVO8_FUNCTION", 0);
 
-        AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 61100);
-        AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 48875);
-        AP_Param::set_and_save_by_name("ATC_ACCEL_Y_MAX", 18235);
-        AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 14.5);
-        AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 6.5);
-        AP_Param::set_and_save_by_name("ATC_ANG_YAW_P", 6.75);
-        AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.0195);
-        AP_Param::set_and_save_by_name("ATC_RAT_PIT_I", 0.2275);
-        AP_Param::set_and_save_by_name("ATC_RAT_PIT_P", 0.2275);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.013);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.25);
-        AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.25);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 55000);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 55000);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_Y_MAX", 18500);
+        AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 8);
+        AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 8);
+        AP_Param::set_and_save_by_name("ATC_ANG_YAW_P", 6);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.0025);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_I", 0.1);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_P", 0.1);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.0025);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.1);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.1);
         AP_Param::set_and_save_by_name("ATC_RAT_YAW_FLTE", 4.75);
-        AP_Param::set_and_save_by_name("ATC_RAT_YAW_I", 0.1025);
-        AP_Param::set_and_save_by_name("ATC_RAT_YAW_P", 1);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_I", 0.05);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_P", 0.5);
         break;
 
     case 2: // Coaxial X8
