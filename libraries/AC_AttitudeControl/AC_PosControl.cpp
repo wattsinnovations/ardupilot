@@ -293,6 +293,8 @@ void AC_PosControl::set_max_speed_z(float speed_down, float speed_up)
 /// set_max_accel_z - set the maximum vertical acceleration in cm/s/s
 void AC_PosControl::set_max_accel_z(float accel_cmss)
 {
+    // gcs().send_text(MAV_SEVERITY_INFO,"set_max_accel_z %f", accel_cmss);
+
     // exit immediately if no change in acceleration
     if (is_equal(_accel_z_cms, accel_cmss)) {
         return;

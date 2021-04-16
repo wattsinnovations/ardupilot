@@ -204,8 +204,8 @@ bool Copter::set_mode(Mode::Number mode, ModeReason reason)
 #if FRAME_CONFIG == HELI_FRAME
     // do not allow helis to enter a non-manual throttle mode if the
     // rotor runup is not complete
-    if (!ignore_checks && 
-    !new_flightmode->has_manual_throttle() && 
+    if (!ignore_checks &&
+    !new_flightmode->has_manual_throttle() &&
     (motors->get_spool_state() == AP_Motors::SpoolState::SPOOLING_UP || motors->get_spool_state() == AP_Motors::SpoolState::SPOOLING_DOWN)) {
         #if MODE_AUTOROTATE_ENABLED == ENABLED
             //if the mode being exited is the autorotation mode allow mode change despite rotor not being at
