@@ -236,7 +236,7 @@ void Copter::setup()
     }
 
     // Always deny arming, PRISM must authorize
-    AP_Param::set_and_save_by_name("DENY_ARM", 1);
+    // AP_Param::set_and_save_by_name("DENY_ARM", 1);
 
     // initialise the main loop scheduler
     scheduler.init(&scheduler_tasks[0], ARRAY_SIZE(scheduler_tasks), MASK_LOG_PM);
