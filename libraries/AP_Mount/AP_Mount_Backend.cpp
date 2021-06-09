@@ -129,6 +129,8 @@ void AP_Mount_Backend::update_targets_from_rc()
 float AP_Mount_Backend::angle_input_rad(const RC_Channel* rc, int16_t angle_min, int16_t angle_max)
 {
     // return radians(((rc->norm_input_ignore_trim() + 1.0f) * 0.5f * (angle_max - angle_min) + angle_min)*0.01f);
+
+    // Watts: Jake
     return radians(((rc->norm_input_dz() + 1.0f) * 0.5f * (angle_max - angle_min) + angle_min)*0.01f);
 }
 

@@ -51,6 +51,11 @@ bool ModeGuided::do_user_takeoff_start(float final_alt_above_home)
 {
     guided_mode = Guided_TakeOff;
 
+    // Jake: set the takeoff accel to be much lower
+    float takeoffAccel = copter.g.takeoff_accel; // cm/s
+    gcs().send_text(MAV_SEVERITY_INFO,"Changing takeoff accel to %f", takeoffAccel);
+    pos_control->set_max_accel_z(takeoffAccel); // default is 100 cm/s
+
     // initialise wpnav destination
     Location target_loc = copter.current_loc;
     target_loc.set_alt_cm(final_alt_above_home, Location::AltFrame::ABOVE_HOME);
@@ -369,9 +374,15 @@ void ModeGuided::run()
 void ModeGuided::takeoff_run()
 {
     auto_takeoff_run();
+
     if (wp_nav->reached_wp_destination()) {
         // optionally retract landing gear
         copter.landinggear.retract_after_takeoff();
+
+        // Jake: Set the Z accel to the default
+        float accel = wp_nav->get_accel_z(); // cm/s
+        gcs().send_text(MAV_SEVERITY_INFO,"changing z accel to %f", accel);
+        pos_control->set_max_accel_z(accel);
 
         // switch to position control mode but maintain current target
         const Vector3f& target = wp_nav->get_wp_destination();

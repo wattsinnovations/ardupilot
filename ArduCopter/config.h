@@ -538,6 +538,10 @@
 #ifndef FW_UPDATE_DEFAULT
  #define FW_UPDATE_DEFAULT       0
 #endif
+
+#ifndef TAKEOFF_ACCEL_DEFAULT
+ #define TAKEOFF_ACCEL_DEFAULT       50.0
+#endif
 //
 
 #ifndef ACRO_Y_EXPO_DEFAULT

@@ -493,6 +493,12 @@ const AP_Param::Info Copter::var_info[] = {
     // @User: Standard
     GSCALAR(fw_update,  "FW_UPDATE",    FW_UPDATE_DEFAULT),
 
+    // @Param: TAKEOFF_ACCEL
+    // @DisplayName: Takeoff acceleration
+    // @Description: Acceleration maximum for takeoff
+    // @User: Standard
+    GSCALAR(takeoff_accel,  "TAKEOFF_ACCEL",    TAKEOFF_ACCEL_DEFAULT),
+
     // variables not in the g class which contain EEPROM saved variables
 
 #if CAMERA == ENABLED
