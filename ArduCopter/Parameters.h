@@ -373,6 +373,15 @@ public:
 
         // 254,255: reserved
 
+        // Watts: Jake: define custom Watts parameters here
+        k_param_prop_grp_id = 256, // Currently configured propulsion group ID.
+        k_param_prop_grp_wr,       // Flag indicating that we should write defaults for parameters in the current
+                                   // propulsion group. Should be set right before a firmware update, and cleared
+                                   // on first boot after an update.
+        k_param_deny_arm, // prevents arming
+        k_param_fw_update, // flag indicating firmware was just updated
+        k_param_takeoff_accel,
+
         // the k_param_* space is 9-bits in size
         // 511: reserved
     };
@@ -464,6 +473,13 @@ public:
     AP_Float                acro_balance_pitch;
     AP_Int8                 acro_trainer;
     AP_Float                acro_rp_expo;
+
+    // Watts parameters
+    AP_Int32                 prop_grp_id;
+    AP_Int32                 prop_grp_wr;
+    AP_Int32                 deny_arm;
+    AP_Int32                 fw_update;
+    AP_Float                 takeoff_accel;
 
     // Note: keep initializers here in the same order as they are declared
     // above.

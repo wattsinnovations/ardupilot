@@ -3745,8 +3745,9 @@ MAV_RESULT GCS_MAVLINK::handle_command_long_packet(const mavlink_command_long_t 
 
     case MAV_CMD_PREFLIGHT_STORAGE:
         if (is_equal(packet.param1, 2.0f)) {
-            AP_Param::erase_all();
-            send_text(MAV_SEVERITY_WARNING, "All parameters reset, reboot board");
+            // AP_Param::erase_all();
+            // send_text(MAV_SEVERITY_WARNING, "All parameters reset, reboot board");
+            send_text(MAV_SEVERITY_WARNING, "Parameter reset has been removed in this firmware");
             result= MAV_RESULT_ACCEPTED;
         }
         break;

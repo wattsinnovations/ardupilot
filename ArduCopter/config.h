@@ -523,6 +523,27 @@
  #define ACRO_RP_EXPO_DEFAULT       0.3f
 #endif
 
+// Watts parameters
+#ifndef PROP_GRP_ID_DEFAULT
+ #define PROP_GRP_ID_DEFAULT       0
+#endif
+#ifndef PROP_GRP_WR_DEFAULT
+ #define PROP_GRP_WR_DEFAULT       0
+#endif
+
+#ifndef DENY_ARM_DEFAULT
+ #define DENY_ARM_DEFAULT       1
+#endif
+
+#ifndef FW_UPDATE_DEFAULT
+ #define FW_UPDATE_DEFAULT       0
+#endif
+
+#ifndef TAKEOFF_ACCEL_DEFAULT
+ #define TAKEOFF_ACCEL_DEFAULT       50.0
+#endif
+//
+
 #ifndef ACRO_Y_EXPO_DEFAULT
  #define ACRO_Y_EXPO_DEFAULT        0.0f
 #endif

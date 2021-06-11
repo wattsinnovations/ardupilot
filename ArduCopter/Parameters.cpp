@@ -466,6 +466,39 @@ const AP_Param::Info Copter::var_info[] = {
     GSCALAR(acro_rp_expo,  "ACRO_RP_EXPO",    ACRO_RP_EXPO_DEFAULT),
 #endif
 
+    // Watts parameters
+
+    // @Param: PROP_GRP_ID
+    // @DisplayName: Propulsion Group ID
+    // @Description: ID of each currently connected propulsion system, which we refer to as a propulsion group.
+    // @Values: 0:Invalid,1:QUAD U8ii,2:COAXIAL X8 U8ii
+    // @User: Standard
+    GSCALAR(prop_grp_id,  "PROP_GRP_ID",    PROP_GRP_ID_DEFAULT),
+
+    // @Param: PROP_GRP_WR
+    // @DisplayName: Propulsion Group Write
+    // @Description: Flag inidicating the propulsion group parameters need to be written on next boot.
+    // @User: Standard
+    GSCALAR(prop_grp_wr,  "PROP_GRP_WR",    PROP_GRP_WR_DEFAULT),
+
+    // @Param: DENY_ARM
+    // @DisplayName: Deny arming
+    // @Description: Flag that just straight up denies arming
+    // @User: Standard
+    GSCALAR(deny_arm,  "DENY_ARM",    DENY_ARM_DEFAULT),
+
+    // @Param: FW_UPDATE
+    // @DisplayName: Firmware update flag
+    // @Description: Flag that indicates if the firmware was just updated
+    // @User: Standard
+    GSCALAR(fw_update,  "FW_UPDATE",    FW_UPDATE_DEFAULT),
+
+    // @Param: TAKEOFF_ACCEL
+    // @DisplayName: Takeoff acceleration
+    // @Description: Acceleration maximum for takeoff
+    // @User: Standard
+    GSCALAR(takeoff_accel,  "TAKEOFF_ACCEL",    TAKEOFF_ACCEL_DEFAULT),
+
     // variables not in the g class which contain EEPROM saved variables
 
 #if CAMERA == ENABLED

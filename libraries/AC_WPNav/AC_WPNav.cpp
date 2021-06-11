@@ -490,10 +490,14 @@ bool AC_WPNav::update_wpnav()
     // get dt from pos controller
     float dt = _pos_control.get_dt();
 
+    // Jake: No. This is bad and shouldn't be here, wasted so much time looking for this.
     // allow the accel and speed values to be set without changing
     // out of auto mode. This makes it easier to tune auto flight
     _pos_control.set_max_accel_xy(_wp_accel_cmss);
     _pos_control.set_max_accel_z(_wp_accel_z_cmss);
+    // _pos_control.set_max_accel_xy(_wp_accel_cmss);
+    // gcs().send_text(MAV_SEVERITY_INFO,"update_wpnav");
+    // _pos_control.set_max_accel_z(_wp_accel_z_cmss);
 
     // wp_speed_update - update _pos_control.set_max_speed_xy if speed change has been requested
     wp_speed_update(dt);

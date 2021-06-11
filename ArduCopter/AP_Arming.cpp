@@ -47,9 +47,12 @@ bool AP_Arming_Copter::run_pre_arm_checks(bool display_failure)
         check_failed(display_failure, "Motor Interlock Enabled");
     }
 
+    // Watts: Jake: mandatory prism prearm checks
+    bool watts_checks = prism_deny_arm_check(display_failure);
+
     // if pre arm checks are disabled run only the mandatory checks
     if (checks_to_perform == 0) {
-        return mandatory_checks(display_failure);
+        return mandatory_checks(display_failure) & watts_checks;
     }
 
     return fence_checks(display_failure)
@@ -58,7 +61,19 @@ bool AP_Arming_Copter::run_pre_arm_checks(bool display_failure)
         & pilot_throttle_checks(display_failure)
         & oa_checks(display_failure)
         & gcs_failsafe_check(display_failure) &
-        AP_Arming::pre_arm_checks(display_failure);
+        AP_Arming::pre_arm_checks(display_failure) &
+        // Watts: Jake: our custom check here for denial of arming
+        watts_checks;
+}
+
+bool AP_Arming_Copter::prism_deny_arm_check(bool display_failure)
+{
+    if (copter.g.deny_arm) {
+        check_failed(ARMING_CHECK_SYSTEM, display_failure, "PRISM is denying arming");
+        return false;
+    }
+
+    return true;
 }
 
 bool AP_Arming_Copter::barometer_checks(bool display_failure)

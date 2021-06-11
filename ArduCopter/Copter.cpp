@@ -218,8 +218,97 @@ void Copter::setup()
 
     init_ardupilot();
 
+    // Watts: Jake: Load our propulsion group parameter set for the currently configured propulsion system ID
+    if (g.prop_grp_wr) {
+        set_and_save_watts_parameters();
+        // Clear the flag
+        AP_Param::set_and_save_by_name("PROP_GRP_WR", 0);
+        _shouldReboot = true;
+    }
+
+    // If firmware was just updated, reset all our default parameters
+    if (g.fw_update) {
+        reset_watts_defaults();
+        AP_Param::set_and_save_by_name("FW_UPDATE", 0); // unset the flag
+    }
+
+    // Always deny arming, PRISM must authorize
+    AP_Param::set_and_save_by_name("DENY_ARM", 1);
+
     // initialise the main loop scheduler
     scheduler.init(&scheduler_tasks[0], ARRAY_SIZE(scheduler_tasks), MASK_LOG_PM);
+}
+
+void Copter::set_and_save_watts_parameters()
+{
+    int32_t group_id = g.prop_grp_id;
+    switch (group_id) {
+    case 0: // invalid
+        break;
+    case 1: // Quad
+        AP_Param::set_and_save_by_name("FRAME_CLASS", 1);
+        AP_Param::set_and_save_by_name("SERVO1_FUNCTION", 33);
+        AP_Param::set_and_save_by_name("SERVO2_FUNCTION", 0);
+        AP_Param::set_and_save_by_name("SERVO3_FUNCTION", 36);
+        AP_Param::set_and_save_by_name("SERVO4_FUNCTION", 0);
+        AP_Param::set_and_save_by_name("SERVO5_FUNCTION", 34);
+        AP_Param::set_and_save_by_name("SERVO6_FUNCTION", 0);
+        AP_Param::set_and_save_by_name("SERVO7_FUNCTION", 35);
+        AP_Param::set_and_save_by_name("SERVO8_FUNCTION", 0);
+
+        AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 55000);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 55000);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_Y_MAX", 18500);
+        AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 8);
+        AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 8);
+        AP_Param::set_and_save_by_name("ATC_ANG_YAW_P", 6);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.0025);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_I", 0.1);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_P", 0.1);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.0025);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.1);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.1);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_FLTE", 4.75);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_I", 0.05);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_P", 0.5);
+        break;
+
+    case 2: // Coaxial X8
+        AP_Param::set_and_save_by_name("FRAME_CLASS", 4);
+        AP_Param::set_and_save_by_name("SERVO1_FUNCTION", 33);
+        AP_Param::set_and_save_by_name("SERVO2_FUNCTION", 38);
+        AP_Param::set_and_save_by_name("SERVO3_FUNCTION", 36);
+        AP_Param::set_and_save_by_name("SERVO4_FUNCTION", 39);
+        AP_Param::set_and_save_by_name("SERVO5_FUNCTION", 35);
+        AP_Param::set_and_save_by_name("SERVO6_FUNCTION", 40);
+        AP_Param::set_and_save_by_name("SERVO7_FUNCTION", 34);
+        AP_Param::set_and_save_by_name("SERVO8_FUNCTION", 37);
+
+        AP_Param::set_and_save_by_name("ATC_ACCEL_P_MAX", 52270);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_R_MAX", 53992);
+        AP_Param::set_and_save_by_name("ATC_ACCEL_Y_MAX", 10830);
+        AP_Param::set_and_save_by_name("ATC_ANG_PIT_P", 9.725);
+        AP_Param::set_and_save_by_name("ATC_ANG_RLL_P", 11);
+        AP_Param::set_and_save_by_name("ATC_ANG_YAW_P", 5.1);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_D", 0.006215);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_I", 0.11);
+        AP_Param::set_and_save_by_name("ATC_RAT_PIT_P", 0.11);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_D", 0.00662);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_I", 0.09777);
+        AP_Param::set_and_save_by_name("ATC_RAT_RLL_P", 0.09777);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_FLTE", 1);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_I", 0.07);
+        AP_Param::set_and_save_by_name("ATC_RAT_YAW_P", 0.75);
+        break;
+
+    default:
+        break;
+    }
+}
+
+void Copter::reset_watts_defaults()
+{
+    // Nothing here yet
 }
 
 void Copter::loop()
@@ -434,6 +523,11 @@ void Copter::three_hz_loop()
 // one_hz_loop - runs at 1Hz
 void Copter::one_hz_loop()
 {
+    // Watts: Jake: We check if the shouldReboot flag is set
+    if (_shouldReboot && (g.prop_grp_wr == 0)) {
+        hal.scheduler->reboot(false);
+    }
+
     if (should_log(MASK_LOG_ANY)) {
         Log_Write_Data(DATA_AP_STATE, ap.value);
     }

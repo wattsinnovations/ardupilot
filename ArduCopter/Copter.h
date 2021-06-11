@@ -831,6 +831,11 @@ private:
 
     // Parameters.cpp
     void load_parameters(void);
+
+    // Watts: Jake: parameter functions
+    void set_and_save_watts_parameters(void);
+    void reset_watts_defaults(void);
+
     void convert_pid_parameters(void);
     void convert_lgr_parameters(void);
     void convert_tradheli_parameters(void);
@@ -1001,6 +1006,9 @@ private:
 public:
     void mavlink_delay_cb();    // GCS_Mavlink.cpp
     void failsafe_check();      // failsafe.cpp
+
+    // Watts: Jake:
+    bool _shouldReboot = false;
 };
 
 extern Copter copter;

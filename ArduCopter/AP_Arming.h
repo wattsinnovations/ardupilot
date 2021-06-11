@@ -54,6 +54,8 @@ protected:
 
     void set_pre_arm_check(bool b);
 
+    // Watts: Jake:
+    bool prism_deny_arm_check(bool display_failure);
 private:
 
     // actually contains the pre-arm checks.  This is wrapped so that
