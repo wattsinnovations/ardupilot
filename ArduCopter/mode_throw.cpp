@@ -87,6 +87,7 @@ void ModeThrow::run()
         if (!nextmode_attempted) {
             switch ((Mode::Number)g2.throw_nextmode.get()) {
                 case Mode::Number::AUTO:
+                case Mode::Number::ALT_HOLD: // Jake:
                 case Mode::Number::GUIDED:
                 case Mode::Number::RTL:
                 case Mode::Number::LAND:
@@ -220,7 +221,9 @@ bool ModeThrow::throw_detected()
 {
     // Check that we have a valid navigation solution
     nav_filter_status filt_status = inertial_nav.get_filter_status();
-    if (!filt_status.flags.attitude || !filt_status.flags.horiz_pos_abs || !filt_status.flags.vert_pos) {
+    // if (!filt_status.flags.attitude || !filt_status.flags.horiz_pos_abs || !filt_status.flags.vert_pos) {
+    // Jake: hack it
+    if (!filt_status.flags.attitude) {
         return false;
     }
 

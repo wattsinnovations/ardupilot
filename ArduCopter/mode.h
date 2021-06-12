@@ -1249,7 +1249,8 @@ public:
     bool init(bool ignore_checks) override;
     void run() override;
 
-    bool requires_GPS() const override { return true; }
+    // bool requires_GPS() const override { return true; }
+    bool requires_GPS() const override { return false; } // Jake: does it though?
     bool has_manual_throttle() const override { return false; }
     bool allows_arming(bool from_gcs) const override { return true; };
     bool is_autopilot() const override { return false; }
