@@ -398,6 +398,9 @@ void Mode::auto_takeoff_run()
         return;
     }
 
+    // set motors to full range
+    motors->set_desired_spool_state(AP_Motors::DesiredSpoolState::THROTTLE_UNLIMITED);
+
     // process pilot's yaw input
     float target_yaw_rate = 0;
     if (!copter.failsafe.radio) {
@@ -409,11 +412,15 @@ void Mode::auto_takeoff_run()
     if (motors->get_spool_state() == AP_Motors::SpoolState::THROTTLE_UNLIMITED) {
         set_land_complete(false);
     } else {
+        // motors have not completed spool up yet so relax navigation and position controllers
         wp_nav->shift_wp_origin_to_current_pos();
+        pos_control->relax_alt_hold_controllers(0.0f);   // forces throttle output to go to zero
+        pos_control->update_z_controller();
+        attitude_control->set_yaw_target_to_current_heading();
+        attitude_control->reset_rate_controller_I_terms();
+        attitude_control->input_euler_angle_roll_pitch_euler_rate_yaw(0.0f, 0.0f, 0.0f);
+        return;
     }
-
-    // set motors to full range
-    motors->set_desired_spool_state(AP_Motors::DesiredSpoolState::THROTTLE_UNLIMITED);
 
     // run waypoint controller
     copter.failsafe_terrain_set_status(wp_nav->update_wpnav());
