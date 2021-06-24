@@ -6,6 +6,25 @@
 #include <AP_Parachute/AP_Parachute.h>
 #include <AP_ServoRelayEvents/AP_ServoRelayEvents.h>
 
+bool AP_Mission::start_command_do_aux_function(const AP_Mission::Mission_Command& cmd)
+{
+    const RC_Channel::AUX_FUNC function = (RC_Channel::AUX_FUNC)cmd.content.auxfunction.function;
+    const RC_Channel::aux_switch_pos_t pos = (RC_Channel::aux_switch_pos_t)cmd.content.auxfunction.switchpos;
+
+    // sanity check the switch position.  Could map from the mavlink
+    // enumeration if we were really keen
+    switch (pos) {
+    case RC_Channel::aux_switch_pos_t::HIGH:
+    case RC_Channel::aux_switch_pos_t::MIDDLE:
+    case RC_Channel::aux_switch_pos_t::LOW:
+        break;
+    default:
+        return false;
+    }
+    rc().do_aux_function(function, pos);
+    return true;
+}
+
 bool AP_Mission::start_command_do_gripper(const AP_Mission::Mission_Command& cmd)
 {
     AP_Gripper *gripper = AP::gripper();

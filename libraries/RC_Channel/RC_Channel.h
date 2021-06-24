@@ -186,7 +186,6 @@ public:
     };
     typedef enum AUX_FUNC aux_func_t;
 
-protected:
 
     // auxillary switch handling (n.b.: we store this as 2-bits!):
     enum aux_switch_pos_t : uint8_t {
@@ -195,9 +194,10 @@ protected:
         HIGH       // indicates auxiliary switch is in the high position (pwm >1800)
     };
 
+protected:
+
     virtual void init_aux_function(aux_func_t ch_option, aux_switch_pos_t);
     virtual void do_aux_function(aux_func_t ch_option, aux_switch_pos_t);
-
     void do_aux_function_avoid_proximity(const aux_switch_pos_t ch_flag);
     void do_aux_function_camera_trigger(const aux_switch_pos_t ch_flag);
     void do_aux_function_fence(const aux_switch_pos_t ch_flag);
@@ -269,6 +269,7 @@ class RC_Channels {
 public:
     friend class SRV_Channels;
     friend class RC_Channel;
+
     // constructor
     RC_Channels(void);
 
@@ -348,6 +349,10 @@ public:
 
     float override_timeout_ms() const {
         return _override_timeout.get() * 1e3f;
+    }
+
+    void do_aux_function(RC_Channel::AUX_FUNC ch_option, RC_Channel::aux_switch_pos_t pos) {
+        rc_channel(0)->do_aux_function(ch_option, pos);
     }
 
 protected:
