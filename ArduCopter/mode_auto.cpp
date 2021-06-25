@@ -930,7 +930,7 @@ void ModeAuto::loiter_to_alt_run()
 #if PRECISION_LANDING == ENABLED
     float alt_error_cm;
     if (copter.mode_loiter.get_precision_loiter_enabled()) {
-        alt_error_cm = get_alt_above_ground_cm();
+        alt_error_cm = get_alt_above_ground_cm() - loiter_to_alt.alt;
     } else {
         alt_error_cm = copter.current_loc.alt - loiter_to_alt.alt;
     }
@@ -960,7 +960,7 @@ void ModeAuto::loiter_to_alt_run()
 
     // get avoidance adjusted climb rate
     target_climb_rate = get_avoidance_adjusted_climbrate(target_climb_rate);
-    target_climb_rate = constrain_float(target_climb_rate, -get_pilot_speed_dn(), g.pilot_speed_up);
+    target_climb_rate = constrain_float(target_climb_rate, -copter.wp_nav->get_default_speed_down(), copter.wp_nav->get_default_speed_up());
 
     pos_control->set_alt_target_from_climb_rate_ff(target_climb_rate, G_Dt, false);
     pos_control->update_z_controller();
