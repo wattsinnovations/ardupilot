@@ -886,6 +886,7 @@ public:
 
 #if PRECISION_LANDING == ENABLED
     void set_precision_loiter_enabled(bool value) { _precision_loiter_enabled = value; }
+    bool get_precision_loiter_enabled() { return _precision_loiter_enabled; }
 #endif
 
 protected:

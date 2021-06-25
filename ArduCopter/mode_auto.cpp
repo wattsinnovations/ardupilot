@@ -926,7 +926,18 @@ void ModeAuto::loiter_to_alt_run()
         _mode = Auto_LoiterToAlt;
         loiter_to_alt.loiter_start_done = true;
     }
-    const float alt_error_cm = copter.current_loc.alt - loiter_to_alt.alt;
+
+#if PRECISION_LANDING == ENABLED
+    float alt_error_cm;
+    if (copter.mode_loiter.get_precision_loiter_enabled()) {
+        alt_error_cm = get_alt_above_ground_cm();
+    } else {
+        alt_error_cm = copter.current_loc.alt - loiter_to_alt.alt;
+    }
+#else
+    float alt_error_cm = copter.current_loc.alt - loiter_to_alt.alt;
+#endif
+
     if (fabsf(alt_error_cm) < 5.0) { // random numbers R US
         loiter_to_alt.reached_alt = true;
     } else if (alt_error_cm * loiter_to_alt.alt_error_cm < 0) {
