@@ -389,12 +389,14 @@ void RC_Channel_Copter::do_aux_function(const aux_func_t ch_option, const aux_sw
 #if PRECISION_LANDING == ENABLED && MODE_LOITER_ENABLED == ENABLED
             switch (ch_flag) {
                 case HIGH:
+                    gcs().send_text(MAV_SEVERITY_INFO, "Precision Loiter Enabled");
                     copter.mode_loiter.set_precision_loiter_enabled(true);
                     break;
                 case MIDDLE:
                     // nothing
                     break;
                 case LOW:
+                    gcs().send_text(MAV_SEVERITY_INFO, "Precision Loiter Disabled");
                     copter.mode_loiter.set_precision_loiter_enabled(false);
                     break;
             }
