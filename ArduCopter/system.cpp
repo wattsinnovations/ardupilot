@@ -118,6 +118,9 @@ void Copter::init_ardupilot()
     // initialise rc channels including setting mode
     rc().init();
 
+    // Watts: Jake: We change the mode depending on INITIAL_MODE
+    set_mode((Mode::Number)g.initial_mode.get(), ModeReason::INITIALISED);
+
     // sets up motors and output to escs
     init_rc_out();
 

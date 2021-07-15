@@ -552,6 +552,10 @@
  #define ACRO_THR_MID_DEFAULT       0.0f
 #endif
 
+#ifndef INITIAL_MODE_DEFAULT
+ #define INITIAL_MODE_DEFAULT       0
+#endif
+
 // RTL Mode
 #ifndef RTL_ALT_FINAL
  # define RTL_ALT_FINAL             0       // the altitude the vehicle will move to as the final stage of Returning to Launch.  Set to zero to land.
