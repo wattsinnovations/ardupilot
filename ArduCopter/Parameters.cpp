@@ -506,6 +506,15 @@ const AP_Param::Info Copter::var_info[] = {
     // @User: Advanced
     GSCALAR(initial_mode,        "INITIAL_MODE",     INITIAL_MODE_DEFAULT),
 
+    // @Param: FS_GCS_TIMEOUT
+    // @DisplayName: GCS failsafe timeout
+    // @Description: Timeout before triggering the GCS failsafe
+    // @User: Advanced
+    // @Units: s
+    // @Range: 0 120
+    // @Increment: 1
+    GSCALAR(fs_gcs_timeout,            "FS_GCS_TIMEOUT",     FS_GCS_TIMEOUT_DEFAULT),
+
     // variables not in the g class which contain EEPROM saved variables
 
 #if CAMERA == ENABLED

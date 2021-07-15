@@ -152,9 +152,6 @@
 #ifndef FS_GCS
  # define FS_GCS                        DISABLED
 #endif
-#ifndef FS_GCS_TIMEOUT_MS
- # define FS_GCS_TIMEOUT_MS             5000    // gcs failsafe triggers after 5 seconds with no GCS heartbeat
-#endif
 
 // Radio failsafe while using RC_override
 #ifndef FS_RADIO_RC_OVERRIDE_TIMEOUT_MS
@@ -554,6 +551,10 @@
 
 #ifndef INITIAL_MODE_DEFAULT
  #define INITIAL_MODE_DEFAULT       0
+#endif
+
+#ifndef FS_GCS_TIMEOUT_DEFAULT
+ #define FS_GCS_TIMEOUT_DEFAULT       5
 #endif
 
 // RTL Mode

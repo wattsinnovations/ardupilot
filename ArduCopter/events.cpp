@@ -120,19 +120,20 @@ void Copter::failsafe_gcs_check()
     // note: this only looks at the heartbeat from the device id set by g.sysid_my_gcs
     const uint32_t last_gcs_update_ms = millis() - failsafe.last_heartbeat_ms;
 
+    const uint32_t timeout_ms = (uint32_t)g.fs_gcs_timeout.get() * 1000;
     // Determine which event to trigger
-    if (last_gcs_update_ms < FS_GCS_TIMEOUT_MS && failsafe.gcs) {
+    if (last_gcs_update_ms < timeout_ms && failsafe.gcs) {
         // Recovery from a GCS failsafe
         set_failsafe_gcs(false);
         failsafe_gcs_off_event();
 
-    } else if (last_gcs_update_ms < FS_GCS_TIMEOUT_MS && !failsafe.gcs) {
+    } else if (last_gcs_update_ms < timeout_ms && !failsafe.gcs) {
         // No problem, do nothing
 
-    } else if (last_gcs_update_ms > FS_GCS_TIMEOUT_MS && failsafe.gcs) {
+    } else if (last_gcs_update_ms > timeout_ms && failsafe.gcs) {
         // Already in failsafe, do nothing
 
-    } else if (last_gcs_update_ms > FS_GCS_TIMEOUT_MS && !failsafe.gcs) {
+    } else if (last_gcs_update_ms > timeout_ms && !failsafe.gcs) {
         // New GCS failsafe event, trigger events
         set_failsafe_gcs(true);
         failsafe_gcs_on_event();

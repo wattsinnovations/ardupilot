@@ -382,6 +382,7 @@ public:
         k_param_fw_update, // flag indicating firmware was just updated
         k_param_takeoff_accel,
         k_param_initial_mode,
+        k_param_fs_gcs_timeout,
 
         // the k_param_* space is 9-bits in size
         // 511: reserved
@@ -482,6 +483,7 @@ public:
     AP_Int32                 fw_update;
     AP_Float                 takeoff_accel;
     AP_Int8                  initial_mode;
+    AP_Int32                 fs_gcs_timeout;
 
     // Note: keep initializers here in the same order as they are declared
     // above.
