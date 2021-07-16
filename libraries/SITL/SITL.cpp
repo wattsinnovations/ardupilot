@@ -265,6 +265,8 @@ const AP_Param::GroupInfo SITL::var_info3[] = {
     // @Units: m
     // @User: Advanced
 
+    AP_GROUPINFO("ESC_TELEM", 40, SITL, esc_telem, 1),
+
     // user settable parameters for the 1st airspeed sensor
     AP_GROUPINFO("ARSPD_RND",     50, SITL,  arspd_noise[0], 2.0),
     AP_GROUPINFO("ARSPD_OFS",     51, SITL,  arspd_offset[0], 2013),
@@ -339,6 +341,10 @@ const AP_Param::GroupInfo SITL::var_gps[] = {
     AP_GROUPINFO("GPS2_HDG",      42, SITL,  gps_hdg_enabled[1], SITL::GPS_HEADING_NONE),
     AP_GROUPINFO("GPS2_ACC",      43, SITL,  gps_accuracy[1], 0.3),
     AP_GROUPINFO("GPS2_VERR",     44, SITL,  gps_vel_err[1], 0),
+
+    AP_GROUPINFO("INIT_LAT_OFS",  45, SITL,  gps_init_lat_ofs, 0),
+    AP_GROUPINFO("INIT_LON_OFS",  46, SITL,  gps_init_lon_ofs, 0),
+    AP_GROUPINFO("INIT_ALT_OFS",  47, SITL,  gps_init_alt_ofs, 0),
 
     AP_GROUPEND
 };
